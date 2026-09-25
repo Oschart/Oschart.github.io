@@ -1,0 +1,104 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import { site } from '../data/site';
+
+// Add a page here and it appears in the nav. `match` decides when the link is
+// highlighted: a prefix test so /blog/some-post still marks "blog" as current.
+const links = [
+  { label: 'about', href: '/' },
+  { label: 'publications', href: '/publications' },
+  { label: 'blog', href: '/blog' },
+  { label: 'cv', href: '/cv' },
+];
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) =>
+  href === '/' ? path === '/' : path === href || path.startsWith(`${href}/`);
+
+const initials = site.name
+  .split(' ')
+  .map((part) => part[0])
+  .join('');
+---
+
+<header>
+  <nav class="container" aria-label="Main">
+    <a class="brand" href="/">{initials}</a>
+    <ul>
+      {
+        links.map((link) => (
+          <li>
+            <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <ThemeToggle />
+  </nav>
+</header>
+
+<style>
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  nav {
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+  }
+
+  .brand {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    letter-spacing: 0.05em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-1);
+    list-style: none;
+    padding: 0;
+    margin-left: auto;
+    /* Let the row scroll rather than wrap on narrow phones. */
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  ul a {
+    display: block;
+    padding: var(--sp-1) var(--sp-3);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  ul a:hover {
+    color: var(--text);
+    background: var(--bg-subtle);
+  }
+
+  ul a[aria-current='page'] {
+    color: var(--text);
+    font-weight: 600;
+    background: var(--bg-subtle);
+  }
+</style>

@@ -1,0 +1,142 @@
+%% The MIT License (MIT)
+%%
+%% Copyright (c) 2015 Daniil Belyakov
+%%
+%% Permission is hereby granted, free of charge, to any person obtaining a copy
+%% of this software and associated documentation files (the "Software"), to deal
+%% in the Software without restriction, including without limitation the rights
+%% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%% copies of the Software, and to permit persons to whom the Software is
+%% furnished to do so, subject to the following conditions:
+%%
+%% The above copyright notice and this permission notice shall be included in all
+%% copies or substantial portions of the Software.
+%%
+%% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+%% SOFTWARE.
+
+
+% One-page cut of Resume.tex for internship applications. Same class, same
+% header data; only the content differs. Resume.tex stays the full version
+% and is what ships as the site's /cv.pdf. Keep the two in sync by hand.
+\documentclass[]{mcdowellcv}
+
+% For mathematical symbols
+\usepackage{amsmath}
+\usepackage{geometry}
+\geometry{top=2.4em,bottom=2.4em,left=3em,right=3em}
+
+% Set applicant's personal data for header
+\name{Mohamed ``Oscar'' Ghanem}
+\address{Saarbrücken, Germany}
+% Phone deliberately omitted: this repo is public. Add it back locally for
+% job applications; do not commit it.
+\contacts{m.ghanem.mg16@gmail.com}
+\email{m.ghanem.mg16@gmail.com}
+
+% Social profiles (kept in this file, not the .cls, so the class stays reusable)
+\github{Oschart}
+\linkedin{maghanem}
+\googlescholar{yPs4CdMAAAAJ}{Publications}
+
+% PDF metadata (read by some parsers/recruiter tools; overrides the empty defaults in the .cls)
+\hypersetup{
+  pdftitle={Mohamed Ghanem -- Resume},
+  pdfauthor={Mohamed Ghanem},
+  pdfsubject={Resume},
+  pdfkeywords={Machine Learning, Neuro-Symbolic, Deep Learning, PhD, Computer Science}
+}
+
+\begin{document}
+
+	% Print the header
+	\makeheader
+
+	% Publications first: for research internships they are the strongest signal.
+	\begin{cvsection}{First-Author Publications}
+		\begin{cvsubsection}{}{}{}
+			\begin{itemize}
+				\item ``The Shape of a Program: Path Signatures for Trace-to-Program Induction.'' \textbf{\textit{NeurIPS 2026}}.
+				\item ``Flowing Through States: ODE Regularization for Reinforcement Learning.'' \textbf{\textit{ICLR 2026}}.
+				\item ``Learning Better Representations From Less Data For Propositional Satisfiability.'' \textbf{\textit{NeurIPS 2024 (Spotlight)}}.
+				\item ``FLoBC: A Decentralized Blockchain-Based Federated Learning Framework.'' \textbf{IEEE BCCA 2022}.
+			\end{itemize}
+		\end{cvsubsection}
+	\end{cvsection}
+
+	\vspace{-0.5em}
+	\begin{cvsection}{Employment}
+
+            \begin{cvsubsection}{Doctoral Researcher}{CISPA Helmholtz Center}{February 2024 -- Present}
+			\begin{itemize}
+                \item Develop neuro-symbolic techniques for formal reasoning domains.
+                \item Designed NeuRes, a framework for learning to solve Boolean Satisfiability.
+                \item Tutored the Neuro-Symbolic Computing 2024 seminar; reviewer for NeurIPS, ICLR \& ICML (2025--2026).
+			\end{itemize}
+		\end{cvsubsection}
+        \begin{cvsubsection}{Machine Learning Engineer}{Spree3D}{October 2021 -- December 2023}
+			\begin{itemize}
+                \item Developed an automated evaluation suite for Virtual Try-On models with neural KPIs (e.g., structural similarity).
+                \item Built an end-to-end deep learning pipeline for volumetric 3D hair generation from portrait images.
+                \item Implemented and tweaked a state-of-the-art video segmentation model that served most of our machine learning pipelines.
+			\end{itemize}
+		\end{cvsubsection}
+
+		\begin{cvsubsection}{Research Assistant}{Max-Planck Institute: MPI-SWS}{June 2022 -- April 2023}
+			\begin{itemize}
+				\item Developed a PyTorch implementation for a meta-learning technique that outperformed most benchmarks.
+                \item Built a unifying Python library for all prominent reward-shaping techniques following a \textbf{stable-baselines3} style.
+			\end{itemize}
+		\end{cvsubsection}
+
+		\begin{cvsubsection}{Automated Reasoning Tutor}{Max-Planck Institute: MPI-INF}{November 2021 -- February 2022}
+			\begin{itemize}
+				\item Conducted weekly tutorials on the foundations of automated theorem provers.
+			\end{itemize}
+		\end{cvsubsection}
+
+
+            \begin{cvsubsection}{Software Engineer}{Nabta Health Ltd.}{July 2019 -- October 2020}
+			\begin{itemize}
+				\item Built React Native features, native NFC sensor drivers (Android \& iOS), and the REST APIs behind them.
+			\end{itemize}
+		\end{cvsubsection}
+	\end{cvsection}
+
+	\vspace{-0.5em}
+	\begin{cvsection}{Education}
+    \begin{cvsubsection}{Technical University of Munich}{Munich, Germany}{February 2024 -- Present}
+			\begin{itemize}
+				\item \textbf{PhD in Computer Science}, expected 2028. Advisor: Prof. Bernd Finkbeiner.
+			\end{itemize}
+		\end{cvsubsection}
+		\begin{cvsubsection}{Saarland University}{Saarbrücken, Germany}{October 2021 -- January 2024}
+			\begin{itemize}
+				\item \textbf{M.Sc. in Computer Science}, GPA: \textbf{1.3} (German scale, 1.0 = best)
+			\end{itemize}
+		\end{cvsubsection}
+
+            \begin{cvsubsection}{The American University in Cairo}{Cairo, Egypt}{September 2016 -- June 2021}
+			\begin{itemize}
+				\item \textbf{B.Sc. in Computer Engineering}, GPA: \textbf{3.97/4.0} (American scale); \textbf{Minor in Mathematics}, GPA: \textbf{4.0/4.0}
+				\item Full-tuition PSSF scholarship (115k USD) for outstanding academic performance.
+			\end{itemize}
+		\end{cvsubsection}
+	\end{cvsection}
+
+	\vspace{-0.5em}
+	\begin{cvsection}{Languages and Technologies}
+		\begin{cvsubsection}{}{}{}
+			\begin{itemize}
+				\item \textbf{Languages:} Python, Lean, C/C++, CUDA, Rust
+				\item \textbf{Tools/Frameworks:} PyTorch, JAX, Docker
+			\end{itemize}
+		\end{cvsubsection}
+	\end{cvsection}
+        \vspace{-1em}
+\end{document}

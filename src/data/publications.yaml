@@ -1,0 +1,203 @@
+# Publications. Newest first is not required — pages sort by `year` descending.
+#
+# To add a paper: copy a block below. Required: id, title, authors, venue, year.
+# Everything else is optional and simply does not render if absent.
+# `id` must be unique (it is the entry key) — a slug of the title works well.
+# Mark yourself in `authors` with **bold** to be highlighted in the list.
+# `selected: true` promotes it to the homepage.
+# `preprint: true` files it under Preprints instead of the peer-reviewed list.
+#
+# The build FAILS with a Zod error if a required field is missing or mistyped.
+# That is deliberate — see src/content.config.ts.
+
+- id: less-effort-shorter-proofs-tamarin
+  title: 'Less Effort, Shorter Proofs: Reinforcement Learning for Security Protocol Analysis in Tamarin'
+  authors:
+    - 'Matthias Cosler'
+    - 'Cas Cremers'
+    - 'Bernd Finkbeiner'
+    - '**Mohamed Ghanem**'
+    - 'Niklas Medinger'
+  venue: 'ACM CCS 2026'
+  year: 2026
+  selected: true
+  abstract: >
+    Presents a reinforcement learning framework for proof search in the Tamarin
+    security protocol verifier, inspired by AlphaZero and AlphaProof. A
+    stateless Tamarin API exposes proof search as a classical RL environment, in
+    which Monte Carlo Tree Search is guided by a neural heuristic that learns
+    from completed subproofs. Across 16 case studies, it finds more proofs
+    automatically than Tamarin's standard search and produces shorter proofs
+    than both the standard and human-engineered heuristics.
+  links:
+    arxiv: 'https://arxiv.org/abs/2605.23643'
+    pdf: 'https://finkbeiner.groups.cispa.de/_assets/paper.CSgFweit.pdf'
+
+- id: natural-synthesis-large-reasoning-models
+  title: 'Natural Synthesis: Outperforming Reactive Synthesis Tools with Large Reasoning Models'
+  authors:
+    - 'Frederik Schmitt'
+    - 'Matthias Cosler'
+    - 'Niklas Metzger'
+    - 'Julian Siber'
+    - 'Vladimir Krsmanović'
+    - '**Mohamed Ghanem**'
+    - 'Bernd Finkbeiner'
+  venue: 'Preprint'
+  year: 2026
+  preprint: true
+  abstract: >
+    Tackles both sides of reactive synthesis. Algorithmically, it couples large
+    reasoning models with model checkers to iteratively repair a synthesized
+    Verilog implementation through sound symbolic feedback, solving more
+    benchmarks than the best dedicated tools in the annual synthesis competition
+    and extending to parameterized systems. On the specification side, an
+    autoformalization step shifts the task from temporal logic to natural
+    language, evaluated on a hand-authored dataset of natural-language
+    specifications.
+  links:
+    arxiv: 'https://arxiv.org/abs/2605.15131'
+    pdf: 'https://arxiv.org/pdf/2605.15131'
+
+- id: learning-reactive-synthesis-model-checking-feedback
+  title: 'Learning Reactive Synthesis from Model Checking Feedback'
+  authors:
+    - 'Frederik Schmitt'
+    - 'Matthias Cosler'
+    - '**Mohamed Ghanem**'
+    - 'Vladimir Krsmanović'
+    - 'Bernd Finkbeiner'
+  venue: 'Preprint'
+  year: 2026
+  preprint: true
+  abstract: >
+    Bridges the two standard ways of applying deep learning to reactive
+    synthesis — reinforcement learning, which converges slowly, and supervised
+    learning, which explores little. The model is initialized by supervised
+    learning and then trained further by reinforcing formally verified
+    predictions, so it learns to synthesize correct solutions rather than fixate
+    on the supervised data. The same signal optimizes for circuit size without
+    degrading performance, and can iteratively reinforce on open problems that
+    existing synthesis tools cannot solve.
+  links:
+    pdf: 'https://openreview.net/pdf?id=00HNN8O7Ni'
+
+- id: flowing-through-states-ode-regularization
+  title: 'Flowing Through States: ODE Regularization for Reinforcement Learning'
+  authors:
+    - '**Mohamed Ghanem**'
+    - 'Bernd Finkbeiner'
+  venue: 'ICLR 2026'
+  year: 2026
+  selected: true
+  abstract: >
+    Proposes FlowReg, a neural ODE-based regularization method for reinforcement
+    learning that aligns an agent's latent representation with the underlying
+    environment dynamics by modeling MDP trajectories as ODE flows. Integrated
+    into Actor-Critic algorithms, it improves performance across Atari
+    environments.
+  links:
+    pdf: 'https://finkbeiner.groups.cispa.de/_assets/paper.C2u9smVK.pdf'
+
+- id: contrastive-neural-model-checking
+  title: 'Learning Representations Through Contrastive Neural Model Checking'
+  authors:
+    - 'Vladimir Krsmanović'
+    - 'Matthias Cosler'
+    - '**Mohamed Ghanem**'
+    - 'Bernd Finkbeiner'
+  venue: 'Preprint'
+  year: 2025
+  preprint: true
+  abstract: >
+    Introduces Contrastive Neural Model Checking (CNML), which uses the model
+    checking task itself as the guiding signal for representation learning. A
+    self-supervised contrastive objective jointly embeds logical specifications
+    and systems into a shared latent space. On industry-inspired retrieval
+    tasks, CNML outperforms algorithmic and neural baselines in both cross-modal
+    and intra-modal settings, and the learned representations transfer to
+    downstream tasks and generalize to more complex formulas.
+  links:
+    arxiv: 'https://arxiv.org/abs/2510.01853'
+    pdf: 'https://finkbeiner.groups.cispa.de/_assets/paper.Dzaj5jbN.pdf'
+
+- id: neures-learning-better-representations-sat
+  title: 'Learning Better Representations From Less Data For Propositional Satisfiability'
+  authors:
+    - '**Mohamed Ghanem**'
+    - 'Frederik Schmitt'
+    - 'Julian Siber'
+    - 'Bernd Finkbeiner'
+  venue: 'NeurIPS 2024 (Spotlight)'
+  year: 2024
+  selected: true
+  abstract: >
+    Introduces NeuRes, a neuro-symbolic approach to propositional satisfiability
+    that combines certificate-driven training with expert iteration. By deriving
+    resolution proofs and satisfying assignments in parallel, NeuRes learns more
+    data-efficient representations than classification-only models like
+    NeuroSAT, requiring orders of magnitude less training data.
+  links:
+    arxiv: 'https://arxiv.org/abs/2402.08365'
+    pdf: 'https://finkbeiner.groups.cispa.de/publications/GSSF24.pdf'
+    code: 'https://github.com/Oschart/NeuRes'
+
+- id: flobc-decentralized-blockchain-federated-learning
+  title: 'FLoBC: A Decentralized Blockchain-Based Federated Learning Framework'
+  authors:
+    - '**Mohamed Ghanem**'
+    - 'Fadi Dawoud'
+    - 'Habiba Gamal'
+    - 'Eslam Soliman'
+    - 'Tamer El-Batt'
+    - 'Hossam Sharara'
+  venue: 'IEEE BCCA 2022'
+  year: 2022
+  abstract: >
+    Presents FLoBC, a generic decentralized federated learning system built on
+    blockchain, supporting any gradient-descent-compatible model. Benchmarks a
+    trainer/validator design and reward-penalty policy, showing the decentralized
+    system matches (and marginally outperforms) centralized training.
+  links:
+    arxiv: 'https://arxiv.org/abs/2112.11873'
+    pdf: 'https://arxiv.org/pdf/2112.11873'
+    code: 'https://github.com/Oschart/FLoBC'
+
+- id: theoretical-complexity-boolean-satisfiability
+  title: 'On Theoretical Complexity and Boolean Satisfiability'
+  authors:
+    - '**Mohamed Ghanem**'
+    - 'Dauod Siniora'
+  venue: 'Undergraduate Survey Thesis'
+  year: 2021
+  preprint: true
+  abstract: >
+    A survey of theoretical complexity: how computation is abstracted by Turing
+    machines, the problem classes P and NP and the relationship between them,
+    and problem reduction as a tool for comparing hardness. Presents Boolean
+    satisfiability at the center of the NP-complete problems along with tractable
+    and intractable variants such as Horn-SAT and 3-SAT, then establishes
+    polynomial-time reductions from 3-SAT to Clique Finding, Hamiltonian Cycle
+    Finding, and 3-Coloring.
+  links:
+    arxiv: 'https://arxiv.org/abs/2112.11769'
+    pdf: 'https://arxiv.org/pdf/2112.11769'
+
+- id: binary-image-skeletonization-u-net
+  title: 'Binary Image Skeletonization Using 2-Stage U-Net'
+  authors:
+    - '**Mohamed Ghanem**'
+    - 'Alaa Anani'
+  venue: 'Preprint'
+  year: 2021
+  preprint: true
+  abstract: >
+    Uses a 2-stage variant of U-Net to split object skeletonization into two
+    sub-problems, shape minimization and corrective skeleton thinning, producing
+    results visually better than the baseline SkelNetOn model. Proposes M-CCORR,
+    a metric based on normalized correlation coefficients, as an alternative to
+    F1 for this task: it handles the class imbalance and avoids F1's
+    over-sensitivity to pixel shifts.
+  links:
+    arxiv: 'https://arxiv.org/abs/2112.11824'
+    pdf: 'https://arxiv.org/pdf/2112.11824'

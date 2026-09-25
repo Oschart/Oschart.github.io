@@ -1,0 +1,190 @@
+%% The MIT License (MIT)
+%%
+%% Copyright (c) 2015 Daniil Belyakov
+%%
+%% Permission is hereby granted, free of charge, to any person obtaining a copy
+%% of this software and associated documentation files (the "Software"), to deal
+%% in the Software without restriction, including without limitation the rights
+%% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%% copies of the Software, and to permit persons to whom the Software is
+%% furnished to do so, subject to the following conditions:
+%%
+%% The above copyright notice and this permission notice shall be included in all
+%% copies or substantial portions of the Software.
+%%
+%% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+%% SOFTWARE.
+
+% The font could be set to Windows-specific Calibri by using the 'calibri' option
+\documentclass[]{mcdowellcv}
+
+% For mathematical symbols
+\usepackage{amsmath}
+\usepackage{geometry}
+\geometry{margin=3em}
+% Keeps an entry's heading from being orphaned at a page break (see Saarland below)
+\usepackage{needspace}
+
+% Set applicant's personal data for header
+\name{Mohamed ``Oscar'' Ghanem}
+\address{Saarbrücken, Germany}
+% Phone deliberately omitted: this repo is public and this PDF ships as the
+% site's /cv.pdf. Add it back locally for job applications; do not commit it.
+\contacts{m.ghanem.mg16@gmail.com}
+\email{m.ghanem.mg16@gmail.com}
+
+% Social profiles (kept in this file, not the .cls, so the class stays reusable)
+\github{Oschart}
+\linkedin{maghanem}
+\googlescholar{yPs4CdMAAAAJ}{Publications}
+
+% PDF metadata (read by some parsers/recruiter tools; overrides the empty defaults in the .cls)
+\hypersetup{
+  pdftitle={Mohamed Ghanem -- Curriculum Vitae},
+  pdfauthor={Mohamed Ghanem},
+  pdfsubject={Curriculum Vitae},
+  pdfkeywords={Machine Learning, Neuro-Symbolic, Deep Learning, PhD, Computer Science}
+}
+
+
+
+
+\begin{document}
+
+
+	% Print the header
+	\makeheader
+	
+	% Print the content
+	\begin{cvsection}{First-Author Publications}
+		\begin{cvsubsection}{}{}{}
+			\begin{itemize}
+				\item ``The Shape of a Program: Path Signatures for Trace-to-Program Induction.'' \textbf{\textit{NeurIPS 2026}}.
+				\item ``Flowing Through States: ODE Regularization for Reinforcement Learning.'' \textbf{\textit{ICLR 2026}}.
+				\item ``Learning Better Representations From Less Data For Propositional Satisfiability.'' \textbf{\textit{NeurIPS 2024 (Spotlight)}}.
+				\item ``FLoBC: A Decentralized Blockchain-Based Federated Learning Framework.'' \textbf{IEEE BCCA 2022}.
+			\end{itemize}
+		\end{cvsubsection}
+	\end{cvsection}
+
+        \vspace{-0.5em}
+	\begin{cvsection}{Employment}
+
+            \begin{cvsubsection}{Doctoral Researcher}{CISPA Helmholtz Center}{February 2024 -- Present}	
+			\begin{itemize}
+                \item Lead research on learning for formal reasoning and control, spanning neuro-symbolic SAT solving and dynamics-regularized reinforcement learning; first-author papers at NeurIPS 2024 (Spotlight) and ICLR 2026.
+				\item Designed a certificate-based framework vastly performing prediction-based learning for SAT solving (NeurIPS 2024).
+				\item Proposed an ODE-based state regularizer that improves sample efficiency and stability of RL agents (ICLR 2026).
+				\item Tutored the Neuro-Symbolic Computing 2024 seminar; reviewer for NeurIPS, ICLR \& ICML (2025--2026).
+			\end{itemize}
+		\end{cvsubsection}
+        \begin{cvsubsection}{Machine Learning Engineer}{Spree3D}{October 2021 -- December 2023}	
+			\begin{itemize}
+                \item Developed an automated evaluation suite for Virtual Try-On models with neural KPIs (e.g., structural similarity).
+                \item Built an end-to-end deep learning pipeline for volumetric 3D hair generation from portrait images.
+                \item Implemented and tweaked a state-of-the-art video segmentation model that served most of our machine learning pipelines.
+                \item Undertook many large-scale GAN-based dataset generation processes producing terabytes of training data.
+                \item Collaborated on developing a deep learning pipeline to produce 3D head geometry from portrait images.
+			\end{itemize}
+		\end{cvsubsection}
+
+		\begin{cvsubsection}{Research Assistant}{Max-Planck Institute: MPI-SWS}{June 2022 -- April 2023}			
+			\begin{itemize}
+				\item Developed a PyTorch implementation for a meta-learning technique that outperformed most benchmarks.
+                \item Built a unifying Python library for all prominent reward-shaping techniques following a \textbf{stable-baselines3} style.
+			\end{itemize}
+		\end{cvsubsection}
+		
+		\begin{cvsubsection}{Automated Reasoning Tutor}{Max-Planck Institute: MPI-INF}{November 2021 -- February 2022}		
+			\begin{itemize}
+				\item Conducted weekly tutorials and graded submissions  on the foundations of automated theorem provers.
+                    % \item Graded and provided feedback on student submissions.
+			\end{itemize}
+		\end{cvsubsection}
+		
+		\begin{cvsubsection}{Data Scientist}{Turing.com}{July 2021 -- October 2021}
+			\begin{itemize}
+				\item Developed an adaptive time-series model for predicting ad-campaign revenue that remains in production use today.
+				\item Created numerous automated analytics reports for product and marketing teams.
+			\end{itemize}
+		\end{cvsubsection}
+
+            \begin{cvsubsection}{Software Engineer}{Nabta Health Ltd.}{July 2019 -- October 2020}
+			\begin{itemize}
+				\item Created numerous React Native components corresponding to four of the main app's primary features.
+                    \item Built NFC temperature sensor drivers on both native platforms (Android Java \& iOS Obj-C).
+                    \item Implemented several REST APIs essential for content-fetching and database synchronization.
+			\end{itemize}
+		\end{cvsubsection}
+	\end{cvsection}
+	
+	\begin{cvsection}{Education}
+    \begin{cvsubsection}{Technical University of Munich}{Munich, Germany}{February 2024 -- Present}
+			\begin{itemize}
+				\item \textbf{PhD in Computer Science}: Machine Learning, \textit{expected} 2028. \textbf{Advisor}: Prof. Bernd Finkbeiner.
+				% \item Completed the PhD Preparatory Phase offered and funded by the \textit{Saarbrücken Graduate School of Computer Science}.
+			\end{itemize}
+		\end{cvsubsection}
+		\Needspace{5\baselineskip}
+		\begin{cvsubsection}{Saarland University}{Saarbrücken, Germany}{October 2021 -- January 2024}
+			\begin{itemize}
+				\item \textbf{M.Sc. in Computer Science}, GPA: \textbf{1.3} (German scale, 1.0 = best)
+				\item \textbf{Graduate Coursework:} Reinforcement Learning, Machine Learning in Cybersecurity, Neuro-Symbolic Computing, Automated Reasoning, Security, Machine Learning for Program Analysis, Automated Debugging 
+				\item Completed two \textbf{Research Immersion Labs} with Prof. Adish Singla and Prof. Bernd Finkbeiner.
+			\end{itemize}
+		\end{cvsubsection}
+  
+            \begin{cvsubsection}{The American University in Cairo}{Cairo, Egypt}{September 2016 -- June 2021}
+			\begin{itemize}
+				\item \textbf{B.Sc. in Computer Engineering}, GPA: \textbf{3.97/4.0} (American scale)
+                    \item \textbf{B.Sc. Thesis:} \textit{FLoBC: A Decentralized Blockchain-Based Federated Learning Framework}
+                    \begin{itemize}
+                        \item This project offers a collaborative framework for training ML models without sharing user-specific training data.
+                    \end{itemize}
+                    \item \textbf{Minor in Mathematics}, GPA: \textbf{4.0/4.0}
+				\item \textbf{Mathematics Thesis:} \textit{On Theoretical Complexity and Boolean Satisfiability}
+			\end{itemize}
+		\end{cvsubsection}
+	\end{cvsection}
+
+        \vspace{-0.5em}
+	\begin{cvsection}{Academic Service}
+		\begin{cvsubsection}{}{}{}
+			\begin{itemize}
+				\item \textbf{Reviewer:} \textbf{NeurIPS} 2025 \& 2026, \textbf{ICLR} 2026, \textbf{ICML} 2026 (\textit{Silver Reviewer}).
+				\item \textbf{Subreviewer:} \textbf{AAAI} 2025.
+			\end{itemize}
+		\end{cvsubsection}
+	\end{cvsection}
+
+        \vspace{-0.5em}
+	\begin{cvsection}{Additional Experience and Awards}
+		\begin{cvsubsection}{}{}{}	
+			\begin{itemize}
+                
+            
+                \item \textbf{2nd Place Winner}: Dell's C(4F)2 Artificial Intelligence Hackathon 2021 (students track).
+                \item \textbf{Contestant}: ACM Arab and African Collegiate Programming Contest (\textbf{ACPC}) in the \textbf{2018} \& \textbf{2019} versions.
+				\item \textbf{Finalist}: ACM Egyptian Collegiate Programming Contest (\textbf{ECPC}) in the \textbf{2018} \& \textbf{2019} versions.
+				\item \textbf{Collegiate Award Holder:} Full-tuition PSSF scholarship (115k USD) for outstanding academic performance.
+			\end{itemize}
+		\end{cvsubsection}
+	\end{cvsection}
+ 
+	\vspace{-0.5em}
+	\begin{cvsection}{Languages and Technologies}
+		\begin{cvsubsection}{}{}{}	
+			\begin{itemize}
+				\item \textbf{Languages:} Python, Lean, C/C++, CUDA C, Rust
+				\item \textbf{Tools/Frameworks:} PyTorch, JAX, Docker
+			\end{itemize}
+		\end{cvsubsection}
+	\end{cvsection}
+        \vspace{-1em}
+\end{document}
+
