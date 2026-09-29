@@ -1,0 +1,38 @@
+---
+import { site } from '../data/site';
+
+// Build year is baked in at build time, which is what you want on a static
+// site — it reflects the last deploy rather than the visitor's clock.
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="container">
+    <span>© {year} {site.name}</span>
+    <span class="built">Built with <a href="https://astro.build" rel="noopener">Astro</a></span>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--border);
+    padding-block: var(--sp-5);
+    font-size: var(--text-sm);
+    color: var(--text-faint);
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+    justify-content: space-between;
+  }
+
+  .built a {
+    color: inherit;
+  }
+
+  .built a:hover {
+    color: var(--accent);
+  }
+</style>

@@ -1,0 +1,86 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PublicationCard from '../components/PublicationCard.astro';
+
+const all = await getCollection('publications');
+
+// Group by year, newest first, so each panel reads as a reverse-chronological CV.
+const byYear = (entries: CollectionEntry<'publications'>[]) =>
+  [...new Set(entries.map((p) => p.data.year))]
+    .sort((a, b) => b - a)
+    .map((year) => ({
+      year,
+      entries: entries
+        .filter((p) => p.data.year === year)
+        .sort((a, b) => a.data.title.localeCompare(b.data.title)),
+    }));
+
+/**
+ * Preprints get their own panel so an unrefereed paper never reads as a
+ * published one. An empty panel is dropped rather than rendered as a bare
+ * heading — the page works the same before the first preprint is added.
+ */
+const panels = [
+  { heading: 'Peer-reviewed', groups: byYear(all.filter((p) => !p.data.preprint)) },
+  { heading: 'Preprints', groups: byYear(all.filter((p) => p.data.preprint)) },
+].filter((panel) => panel.groups.length > 0);
+---
+
+<Base title="Publications" description="Peer-reviewed papers, preprints, and workshop contributions.">
+  <h1>Publications</h1>
+
+  {
+    all.length === 0 ? (
+      <p class="empty">No publications listed yet.</p>
+    ) : (
+      panels.map((panel) => (
+        <section class="panel">
+          <h2 class="section-heading">{panel.heading}</h2>
+          {panel.groups.map((group) => (
+            <section class="year">
+              <h3 class="year-heading">{group.year}</h3>
+              <div class="stack">
+                {group.entries.map((entry) => (
+                  <PublicationCard entry={entry} />
+                ))}
+              </div>
+            </section>
+          ))}
+        </section>
+      ))
+    )
+  }
+</Base>
+
+<style>
+  h1 {
+    margin-bottom: var(--sp-6);
+  }
+
+  .panel + .panel {
+    margin-top: var(--sp-7);
+  }
+
+  .year + .year {
+    margin-top: var(--sp-5);
+  }
+
+  .year-heading {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-faint);
+    margin-bottom: var(--sp-3);
+  }
+
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+
+  .empty {
+    color: var(--text-muted);
+  }
+</style>

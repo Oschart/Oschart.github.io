@@ -1,0 +1,156 @@
+---
+import Base from '../layouts/Base.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import { site } from '../data/site';
+import { cvSections } from '../data/cv';
+
+const dateRange = (start?: string, end?: string) => {
+  if (!start) return null;
+  return end ? `${start} — ${end}` : start;
+};
+---
+
+<Base title="CV" description={`Curriculum vitae for ${site.name}.`}>
+  <header class="head">
+    <div>
+      <h1>Curriculum Vitae</h1>
+      <p class="sub">{site.displayName} · {site.role}</p>
+    </div>
+    <a class="download" href={site.cvPdf} download>Download PDF</a>
+  </header>
+
+  <div class="contact">
+    <SocialLinks />
+  </div>
+
+  {
+    cvSections.map((section) => (
+      <section>
+        <h2 class="section-heading">{section.heading}</h2>
+        <ul>
+          {section.entries.map((entry) => (
+            <li>
+              <div class="row">
+                <h3>{entry.title}</h3>
+                {dateRange(entry.start, entry.end) && (
+                  <span class="dates">{dateRange(entry.start, entry.end)}</span>
+                )}
+              </div>
+              {entry.organization && (
+                <p class="org">
+                  {entry.organizationUrl ? (
+                    <a href={entry.organizationUrl} rel="noopener">
+                      {entry.organization}
+                    </a>
+                  ) : (
+                    entry.organization
+                  )}
+                  {entry.location && <span class="loc"> · {entry.location}</span>}
+                </p>
+              )}
+              {entry.details && entry.details.length > 0 && (
+                <ul class="details">
+                  {entry.details.map((detail) => (
+                    <li>{detail}</li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</Base>
+
+<style>
+  .head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--sp-4);
+    flex-wrap: wrap;
+  }
+
+  .sub {
+    margin-top: var(--sp-1);
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .download {
+    padding: var(--sp-2) var(--sp-4);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-sm);
+    background: var(--accent-subtle);
+    font-size: var(--text-sm);
+    font-weight: 550;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .download:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .contact {
+    margin-top: var(--sp-4);
+  }
+
+  section {
+    margin-top: var(--sp-6);
+  }
+
+  section > ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+  }
+
+  .row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--sp-4);
+  }
+
+  h3 {
+    font-size: var(--text-base);
+    font-weight: 600;
+  }
+
+  .dates {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-faint);
+    white-space: nowrap;
+  }
+
+  .org {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  .loc {
+    color: var(--text-faint);
+  }
+
+  .details {
+    margin-top: var(--sp-2);
+    padding-left: var(--sp-5);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  /* Nav, footer, and forced-light colors are handled by the global print
+     block in global.css. These two are page-specific. */
+  @media print {
+    .download,
+    .contact {
+      display: none;
+    }
+  }
+</style>

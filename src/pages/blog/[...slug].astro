@@ -1,0 +1,19 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import Post from '../../layouts/Post.astro';
+
+// Drafts are excluded here as well as in the listing, so a draft has no
+// reachable URL at all rather than an unlinked-but-public one.
+export const getStaticPaths = (async () => {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}) satisfies GetStaticPaths;
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Post entry={entry}>
+  <Content />
+</Post>
