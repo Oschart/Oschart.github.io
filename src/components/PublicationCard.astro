@@ -1,0 +1,149 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'publications'>;
+}
+
+const { entry } = Astro.props;
+const { title, authors, venue, year, abstract, links } = entry.data;
+
+/**
+ * Authors are written with **markdown bold** to mark yourself. Escape first so
+ * a stray angle bracket in a name can never inject markup, then apply bolding.
+ */
+const renderAuthors = (names: readonly string[]) =>
+  names
+    .map((name) =>
+      name
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>'),
+    )
+    .join(', ');
+
+// Only render the link row for keys that are actually set.
+const linkEntries = Object.entries(links).filter(([, href]) => Boolean(href)) as [string, string][];
+---
+
+<article>
+  <h3>{title}</h3>
+  <p class="authors" set:html={renderAuthors(authors)} />
+  <p class="venue">
+    <span>{venue}</span>
+    <span class="year">{year}</span>
+  </p>
+
+  {abstract && (
+    <details>
+      <summary>Abstract</summary>
+      <p>{abstract}</p>
+    </details>
+  )}
+
+  {
+    linkEntries.length > 0 && (
+      <ul class="links">
+        {linkEntries.map(([kind, href]) => (
+          <li>
+            <a href={href} rel="noopener">
+              {kind}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</article>
+
+<style>
+  article {
+    padding: var(--sp-4) var(--sp-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-raised);
+    box-shadow: var(--shadow);
+  }
+
+  article:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-raised);
+  }
+
+  h3 {
+    font-size: var(--text-base);
+    margin-bottom: var(--sp-2);
+  }
+
+  .authors {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* The author entry wrapped in ** in the YAML — i.e. you. */
+  .authors :global(strong) {
+    color: var(--text);
+    font-weight: 650;
+  }
+
+  .venue {
+    display: flex;
+    align-items: baseline;
+    gap: var(--sp-2);
+    margin-top: var(--sp-1);
+    font-size: var(--text-sm);
+    color: var(--text-faint);
+  }
+
+  .year {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    padding: 0 var(--sp-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+  }
+
+  details {
+    margin-top: var(--sp-3);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  summary {
+    cursor: pointer;
+    color: var(--text-faint);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  details p {
+    margin-top: var(--sp-2);
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+    list-style: none;
+    padding: 0;
+    margin-top: var(--sp-3);
+  }
+
+  .links a {
+    display: block;
+    padding: 0 var(--sp-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-decoration: none;
+  }
+
+  .links a:hover {
+    background: var(--accent-subtle);
+    border-color: var(--accent);
+  }
+</style>

@@ -1,0 +1,8 @@
+<!-- TODO(mohamed): replace with a real headshot.
+     Save it as public/avatar.jpg and set `avatar: '/avatar.jpg'` in src/data/site.ts.
+     Square, at least 240x240, is ideal. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <rect width="120" height="120" fill="#e3e6ea"/>
+  <circle cx="60" cy="46" r="20" fill="#b9c0c9"/>
+  <path d="M20 120c0-22 18-34 40-34s40 12 40 34z" fill="#b9c0c9"/>
+</svg>
